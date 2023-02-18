@@ -18,14 +18,15 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = () => {
-    if (read === true) {
-      return `${title} by ${author}, ${pages} pages, read.`;
-    }
-
-    return `${title} by ${author}, ${pages} pages, not read.`;
-  };
 }
+
+Book.prototype.info = function () {
+  if (this.read === true) {
+    return `${this.title} by ${this.author}, ${this.pages} pages, read.`;
+  }
+
+  return `${this.title} by ${this.author}, ${this.pages} pages, not read.`;
+};
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
@@ -37,6 +38,17 @@ function displayBooks(array) {
   for (let i = 0; i < array.length; i += 1) {
     const newBookDisplay = document.createElement('div');
     const removeButton = document.createElement('button');
+    const toggleRead = document.createElement('button');
+    toggleRead.textContent = 'Toggle Read';
+    toggleRead.className = i;
+    toggleRead.addEventListener('click', () => {
+      if (myLibrary[i].read === true) {
+        myLibrary[i].read = false;
+      } else {
+        myLibrary[i].read = true;
+      }
+      displayBooks(myLibrary);
+    });
     removeButton.textContent = 'Remove';
     removeButton.className = i;
     removeButton.addEventListener('click', () => {
@@ -45,6 +57,7 @@ function displayBooks(array) {
     });
     newBookDisplay.textContent = array[i].info();
     newBookDisplay.appendChild(removeButton);
+    newBookDisplay.appendChild(toggleRead);
     library.appendChild(newBookDisplay);
   }
 }
