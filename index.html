@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <h1>A library to store your books.</h1>
+    </div>
+
+    <form id="bookForm">
+        <section>
+            <fieldset>
+                <legend>Book Details:</legend>
+                <ul>
+                    <li>
+                        <label for="bookTitle">
+                            <span>Book Title: </span>
+                            <input type="text" id="bookTitle" name="bookTitle" value="testing"/>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="bookAuthor">
+                            <span>Book Author: </span>
+                            <input type="text" id="bookAuthor" name="bookAuthor" />
+                        </label>
+                    </li>
+                    <li>
+                        <label for="bookPages">
+                            <span>Number of Pages: </span>
+                            <input type="number" id="bookPages" name="bookPages" />
+                        </label>
+                    </li>
+                    <li>
+                        <label for="read">
+                            <span>Read? </span>
+                            <input type="checkbox" id="read" name="read" />
+                        </label>
+                    </li>
+                </ul>
+            </fieldset>
+        </section>
+        <section>
+            <p>
+                <button class="submitButton" type="submit">Enter book details.</button>
+            </p>
+        </section>
+    </form>
+
+    <div class="library">
+    </div>
+
+    <script src="./javascript.js"></script>
+</body>
+</html>
