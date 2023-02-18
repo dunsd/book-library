@@ -2,6 +2,16 @@ const myLibrary = [];
 
 const library = document.querySelector('.library');
 const bookForm = document.querySelector('#bookForm');
+const showButton = document.querySelector('.addBook');
+const formContainer = document.querySelector('.formSection');
+
+showButton.addEventListener('click', () => {
+  if (formContainer.style.display !== 'block') {
+    formContainer.style.display = 'block';
+  } else {
+    formContainer.style.display = 'none';
+  }
+});
 
 function Book(title, author, pages, read) {
   this.title = title;
