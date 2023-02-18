@@ -31,11 +31,20 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+// clears library display and regenerates list with new book
 function displayBooks(array) {
   library.textContent = '';
   for (let i = 0; i < array.length; i += 1) {
     const newBookDisplay = document.createElement('div');
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.className = i;
+    removeButton.addEventListener('click', () => {
+      myLibrary.splice(i, 1);
+      displayBooks(myLibrary);
+    });
     newBookDisplay.textContent = array[i].info();
+    newBookDisplay.appendChild(removeButton);
     library.appendChild(newBookDisplay);
   }
 }
@@ -51,7 +60,7 @@ bookForm.addEventListener('submit', (e) => {
   addBookToLibrary(newBook);
   displayBooks(myLibrary);
 });
-
+// Prepopulate library with some books
 const lotr = new Book('Fellowship Of The Ring', 'J.R.R Tolkien', 300, false);
 const dune = new Book('Dune', 'Frank Herbert', 600, 'true');
 addBookToLibrary(lotr);
